@@ -1,36 +1,45 @@
-<script>
-function array_rand (array, num) {
-  var keys = Object.keys(array)
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Generate</title>
+</head>
+<body>
+    <script>
+        function array_rand (array, num) {
+            var keys = Object.keys(array)
 
-  if (typeof num === 'undefined' || num === null) {
-    num = 1
-  } else {
-    num = +num
-  }
-  if (isNaN(num) || num < 1 || num > keys.length) {
-    return null
-  }
-  for (var i = keys.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1)) // 0 ≤ j ≤ i
-    var tmp = keys[j]
-    keys[j] = keys[i]
-    keys[i] = tmp
-  }
-  return num === 1 ? keys[0] : keys.slice(0, num)
-}
+            if (typeof num === 'undefined' || num === null) {
+                num = 1
+            } else {
+                num = +num
+            }
+            if (isNaN(num) || num < 1 || num > keys.length) {
+                return null
+            }
+            for (var i = keys.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1)) // 0 ≤ j ≤ i
+                var tmp = keys[j]
+                keys[j] = keys[i]
+                keys[i] = tmp
+            }
+            return num === 1 ? keys[0] : keys.slice(0, num)
+        }
 
-function get_digits () {
-  var all_num = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52];
-  var digits = document.getElementById("digits");
-  digits.innerHTML = "";
-  array_rand(all_num, 6).forEach(function(e) {
-    digits.innerHTML += "<b> " + all_num[e] + " |</b>";
-    console.log(e);
-  });
-}
-</script>
+        function get_digits () {
+            var all_num = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52];
+            var digits = document.getElementById("digits");
+            digits.innerHTML = "";
+            array_rand(all_num, 6).forEach(function(e) {
+                digits.innerHTML += "<b> " + all_num[e] + " |</b>";
+                console.log(e);
+            });
+        }
+    </script>
 
-<button onclick="get_digits();">Generate</button>
-<br>
-<br>
-<div id="digits"></div>
+    <button onclick="get_digits();">Generate</button>
+    <br>
+    <br>
+    <div id="digits"></div>
+</body>
+</html>
